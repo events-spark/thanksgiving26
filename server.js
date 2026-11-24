@@ -124,6 +124,8 @@ app.post("/api", express.text({ type: "*/*", limit: "8kb" }), async (req, res, n
 });
 
 const INDEX = path.join(__dirname, "index.html");
+const OG = path.join(__dirname, "og.png");
+app.get("/og.png", (req, res) => res.set("Cache-Control", "public, max-age=86400").type("png").sendFile(OG));
 app.get(["/", "/index.html"], (req, res) => res.set("Cache-Control", "no-cache").sendFile(INDEX));
 app.use((req, res) => res.redirect(302, "/"));
 
