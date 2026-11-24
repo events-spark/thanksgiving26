@@ -178,7 +178,10 @@ section + section { border-top: 1px solid var(--line); }
 .cards { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 12px; }
 .card { border-radius: 14px; padding: 16px; border: 1px solid var(--line); background: var(--surface); min-width: 0; position: relative; }
 .card.open { border-style: dashed; border-color: var(--line-strong); background: transparent; }
-.card.claimed { background: linear-gradient(180deg, var(--surface-2), var(--surface)); border-color: color-mix(in srgb, var(--c) 45%, transparent); }
+.card.claimed { background: linear-gradient(160deg, color-mix(in srgb, var(--c) 22%, var(--surface)), color-mix(in srgb, var(--c) 8%, var(--surface))); border-color: color-mix(in srgb, var(--c) 70%, transparent); box-shadow: 0 10px 28px color-mix(in srgb, var(--c) 14%, transparent); }
+.card .tick { display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 8px; border-radius: 50%; background: var(--c); color: var(--on-accent); font-size: 12px; font-weight: 800; vertical-align: 2px; font-family: var(--body); }
+.card .who b { color: var(--ink); font-weight: 700; }
+.card .who.lead { margin: 0 0 8px; }
 .card.fresh { animation: pop 0.7s cubic-bezier(.2,1.4,.4,1); }
 @keyframes pop { 0% { transform: scale(0.94); } 100% { transform: none; } }
 .card .dish { font-family: var(--display); font-size: 18px; font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; }
@@ -379,10 +382,10 @@ footer p.small { margin-top: 10px; color: var(--ink-3); font-size: 14px; }
   "use strict";
 
   /* ------------------------------------------------------------------ config
-     ENDPOINT: the Google Apps Script web-app URL for the standalone version.
-     Leave empty inside claude.ai, where the page uses the artifact's own store. */
-  const CONFIG = { endpoint: "PASTE-WEB-APP-URL-HERE" };
-  const ENDPOINT = /^https:\/\/script\.google\.com\//.test(CONFIG.endpoint) ? CONFIG.endpoint : "";
+     ENDPOINT: the sign-up API. "/api" is served by server.js on the same site (Render).
+     Where no API answers (a static copy, or inside claude.ai), the page falls back. */
+  const CONFIG = { endpoint: "/api" };
+  const ENDPOINT = /^\/api$/.test(CONFIG.endpoint) || /^https:\/\/script\.google\.com\//.test(CONFIG.endpoint) ? CONFIG.endpoint : "";
 
   const CATS = {
     app:     { label: "Appetizers", one: "appetizer", color: "var(--gold)" },
@@ -540,10 +543,25 @@ footer p.small { margin-top: 10px; color: var(--ink-3); font-size: 14px; }
 
   async function startSheet() {
     if (!ENDPOINT) return false;
+    // Probe first: a static copy of this page has no API behind it.
+    let first = null;
+    try {
+      const res = await fetch(ENDPOINT + "?t=" + Date.now(), { cache: "no-store" });
+      const data = res.ok ? await res.json() : null;
+      if (data && data.ok === true && Array.isArray(data.items)) first = data.items;
+    } catch {}
+    if (!first) return false;
     const tokens = store.get("tg26-tokens") || {};
+    // Host key: open the page once with ?admin=KEY to be able to remove any sign-up.
+    try {
+      const u = new URL(location.href);
+      const k = u.searchParams.get("admin");
+      if (k) { store.set("tg26-admin", k); u.searchParams.delete("admin"); history.replaceState(null, "", u.pathname + u.search + u.hash); }
+    } catch {}
+    let admin = store.get("tg26-admin") || "";
     Backend.kind = "sheet";
     S.canWrite = true;
-    Backend.canRemove = (it) => !!tokens[it.id];
+    Backend.canRemove = (it) => S.isOwner || !!tokens[it.id];
     async function call(payload) {
       const res = await fetch(ENDPOINT, { method: "POST", body: JSON.stringify(payload) });
       if (!res.ok) throw { code: "error" };
@@ -569,11 +587,16 @@ footer p.small { margin-top: 10px; color: var(--ink-3); font-size: 14px; }
       return data.id;
     };
     Backend.remove = async (it) => {
-      await call({ action: "remove", id: it.id, token: tokens[it.id] });
+      await call({ action: "remove", id: it.id, token: tokens[it.id] || "", admin: S.isOwner ? admin : "" });
       delete tokens[it.id]; store.set("tg26-tokens", tokens);
       await load();
     };
-    load();
+    S.items = first.map((r) => norm(r, r.id)).filter(Boolean);
+    S.ready = true;
+    if (admin && /^\/api$/.test(ENDPOINT)) {
+      call({ action: "check-admin", admin }).then(() => { S.isOwner = true; render(); })
+        .catch(() => { admin = ""; store.set("tg26-admin", ""); });
+    }
     setInterval(() => { if (!document.hidden) load(); }, 20000);
     document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
     return true;
@@ -586,7 +609,7 @@ footer p.small { margin-top: 10px; color: var(--ink-3); font-size: 14px; }
     const n = SLOTS.filter((s) => claimedSlots.has(s.id)).length;
     $("barFill").style.width = Math.round((n / SLOTS.length) * 100) + "%";
     $("progressNum").textContent = n + " of " + SLOTS.length;
-    $("progressText").textContent = n === SLOTS.length ? "suggested dishes claimed. Extras welcome!" : "suggested dishes claimed";
+    $("progressText").textContent = n === SLOTS.length ? "suggested dishes covered. Extras welcome!" : "suggested dishes covered";
 
     board.replaceChildren();
     for (const [key, cat] of Object.entries(CATS)) {
@@ -612,7 +635,7 @@ footer p.small { margin-top: 10px; color: var(--ink-3); font-size: 14px; }
       note.hidden = false;
       note.replaceChildren(h("strong", null, "Tap any dish to sign up. "), "We’ll write a quick message for you to send Rohan, and he’ll add you to the list.");
     } else note.hidden = true;
-    $("ownerNote").hidden = !(S.isOwner && Backend.kind === "claude");
+    $("ownerNote").hidden = !S.isOwner;
   }
   function openCard(s) {
     return h("li", { class: "card open" },
@@ -625,12 +648,21 @@ footer p.small { margin-top: 10px; color: var(--ink-3); font-size: 14px; }
     const tags = [];
     if (it.gluten) tags.push(h("span", { class: "tag warn" }, "Gluten"));
     if (it.nuts) tags.push(h("span", { class: "tag warn" }, "Nuts"));
-    const li = h("li", { class: "card claimed" + (S.fresh.has(it.id) ? " fresh" : "") },
-      h("div", { class: "dish" }, it.dish),
-      it.note ? h("div", { class: "hint" }, it.note) : (s && it.dish !== s.dish ? h("div", { class: "hint" }, "for the " + s.dish.toLowerCase() + " spot") : null),
-      h("div", { class: "who" }, it.family),
-      tags.length ? h("div", { class: "tags" }, tags) : null,
-    );
+    const verb = /&| and |\+|,/i.test(it.family) ? " are bringing" : " is bringing";
+    const check = () => h("span", { class: "tick", "aria-hidden": "true" }, "✓");
+    const li = s
+      ? h("li", { class: "card claimed" + (S.fresh.has(it.id) ? " fresh" : "") },
+          h("div", { class: "dish" }, check(), it.dish),
+          it.note ? h("div", { class: "hint" }, it.note) : (it.dish !== s.dish ? h("div", { class: "hint" }, "for the " + s.dish.toLowerCase() + " spot") : null),
+          h("div", { class: "who" }, h("b", null, it.family), verb + " this"),
+          tags.length ? h("div", { class: "tags" }, tags) : null,
+        )
+      : h("li", { class: "card claimed" + (S.fresh.has(it.id) ? " fresh" : "") },
+          h("div", { class: "who lead" }, h("b", null, it.family), verb),
+          h("div", { class: "dish" }, check(), it.dish),
+          it.note ? h("div", { class: "hint" }, it.note) : null,
+          tags.length ? h("div", { class: "tags" }, tags) : null,
+        );
     if (Backend.canRemove(it)) {
       const btn = h("button", { class: "remove", type: "button" }, "Remove");
       let armed = null;
@@ -739,7 +771,7 @@ footer p.small { margin-top: 10px; color: var(--ink-3); font-size: 14px; }
     } catch (x) {
       btn.disabled = false; btn.textContent = "Add to the table";
       const code = x && x.code;
-      if (code === "taken") { err("Someone just claimed this one. Pick another, or add your dish under Bring something else."); }
+      if (code === "taken") { err("Another family just signed up for this one. Pick another, or add your dish under Bring something else."); }
       else if (code === "readonly") { showMessage(it); }
       else if (code === "full") { err("The list is full. Text Rohan what you’re bringing instead."); }
       else { err("That didn’t save. Check your connection and try again."); }

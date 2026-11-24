@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: thanksgiving26
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /healthz
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: thanksgiving26-db
+          property: connectionString
+      - key: ADMIN_KEY
+        generateValue: true
+
+databases:
+  - name: thanksgiving26-db
+    plan: free
+    databaseName: thanksgiving
+    user: thanksgiving
