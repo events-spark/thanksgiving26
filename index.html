@@ -1,0 +1,852 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0f241d"><meta property="og:title" content="Thanksgiving 2026 at Hill Street"><meta property="og:description" content="Menu and dish sign-up for Thursday, November 26."><style>body{margin:0}img{max-width:100%}</style><title>Thanksgiving 2026 at Hill Street</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap">
+<style>
+/* Layout: a candlelit harvest table. Full-bleed pine hero with drifting leaves,
+   then a letter + photos, the host's menu by course, and a four-column dish board. */
+:root {
+  --pine: #0f241d;        /* page ground */
+  --pine-2: #15302760;    /* translucent wash */
+  --surface: #17332a;     /* panels */
+  --surface-2: #1e3e34;   /* raised */
+  --line: rgba(236, 224, 200, 0.14);
+  --line-strong: rgba(236, 224, 200, 0.28);
+  --ink: #f4ead9;         /* warm paper white */
+  --ink-2: #b8c4b3;       /* sage-tinted muted */
+  --ink-3: #8a9a8c;
+  --persimmon: #f2693a;
+  --gold: #f3b94a;
+  --cranberry: #ec5f86;
+  --sage: #9fcb98;
+  --cider: #f0904a;
+  --on-accent: #1a120a;
+  --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --body: "Figtree", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --hand: "Caveat", "Bradley Hand", "Segoe Print", cursive;
+  --r: 18px;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--pine);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--pine);
+}
+.wrap {
+  width: 100%; max-width: 1120px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+h1, h2, h3 { font-family: var(--display); margin: 0; text-wrap: balance; }
+p { margin: 0; }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 6px; }
+
+/* ---------- hero ---------- */
+.hero {
+  position: relative; overflow: hidden; isolation: isolate;
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+  padding-top: calc(env(safe-area-inset-top, 0px) + clamp(56px, 9vw, 112px));
+  padding-bottom: clamp(48px, 7vw, 88px);
+  background:
+    radial-gradient(120% 80% at 85% 0%, rgba(242, 105, 58, 0.22), transparent 60%),
+    radial-gradient(90% 70% at 0% 100%, rgba(243, 185, 74, 0.12), transparent 60%),
+    var(--pine);
+  border-bottom: 1px solid var(--line);
+  cursor: default;
+}
+#leaves { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--gold);
+}
+.eyebrow .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--persimmon); }
+.title {
+  margin-top: 18px;
+  font-weight: 800; font-size: clamp(40px, 12.4vw, 160px);
+  line-height: 0.86; letter-spacing: -0.045em;
+  font-variation-settings: "opsz" 96;
+}
+.title .line2 {
+  display: block; font-weight: 300; letter-spacing: -0.03em;
+  font-size: 0.5em; line-height: 1.05; margin-top: 0.18em; color: var(--persimmon);
+}
+.title .year {
+  display: inline-block; font-size: 0.24em; font-weight: 700; letter-spacing: 0.02em;
+  vertical-align: top; margin-left: 0.25em; margin-top: 0.5em; color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.lede { margin-top: 26px; max-width: 34ch; font-size: clamp(18px, 2.2vw, 22px); color: var(--ink); opacity: 0.92; }
+.facts {
+  margin-top: 36px; display: grid; gap: 1px; max-width: 760px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.6fr);
+  background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden;
+}
+.fact { background: rgba(15, 36, 29, 0.72); backdrop-filter: blur(6px); padding: 16px 18px; min-width: 0; }
+.fact dt { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; }
+.fact dd { margin: 4px 0 0; font-family: var(--display); font-size: 19px; font-weight: 500; }
+.fact dd.tbd { color: var(--ink-2); font-weight: 300; font-style: normal; }
+.fact dd.tbd::after { content: ""; display: block; width: 52px; height: 2px; margin-top: 6px; background: repeating-linear-gradient(90deg, var(--gold) 0 6px, transparent 6px 10px); }
+.countdown { color: var(--gold); font-variant-numeric: tabular-nums; }
+.tap-hint { margin-top: 18px; font-family: var(--hand); font-size: 22px; color: var(--ink-3); }
+
+/* ---------- sections ---------- */
+section { padding-block: clamp(56px, 8vw, 104px); }
+section + section { border-top: 1px solid var(--line); }
+.kicker { font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--persimmon); }
+.h2 { margin-top: 10px; font-size: clamp(34px, 5.4vw, 58px); font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+.sub { margin-top: 14px; max-width: 58ch; color: var(--ink-2); font-size: 17px; }
+
+/* letter + photos */
+.welcome { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(36px, 6vw, 80px); align-items: center; }
+.letter p + p { margin-top: 16px; }
+.letter .body { margin-top: 24px; font-size: 18px; max-width: 46ch; }
+.sig { margin-top: 26px; font-family: var(--hand); font-size: 34px; line-height: 1; color: var(--gold); transform: rotate(-2deg); transform-origin: left; }
+.photos { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 10px; }
+.polaroid {
+  margin: 0; background: #f6eedf; color: #2a2118; padding: 10px 10px 0; border-radius: 4px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38), 0 2px 6px rgba(0, 0, 0, 0.25);
+  transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
+}
+.polaroid:nth-child(1) { transform: rotate(-4deg) translateY(8px); }
+.polaroid:nth-child(2) { transform: rotate(3.5deg) translateY(-14px); }
+.polaroid:hover { transform: rotate(0) translateY(-4px) scale(1.02); }
+.polaroid .ph {
+  aspect-ratio: 4 / 5; width: 100%; max-width: 100%; border-radius: 2px; overflow: hidden;
+  display: grid; place-items: center; text-align: center;
+  background:
+    radial-gradient(circle at 30% 25%, rgba(243, 185, 74, 0.55), transparent 55%),
+    radial-gradient(circle at 75% 80%, rgba(242, 105, 58, 0.5), transparent 55%),
+    #2b4a3e;
+  color: #f6eedf;
+}
+.polaroid .ph img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.polaroid .ph span { font-family: var(--display); font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.85; padding: 12px; }
+.polaroid figcaption { font-family: var(--hand); font-size: 22px; text-align: center; padding: 8px 4px 12px; }
+
+/* menu */
+.courses { margin-top: 44px; display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); }
+.course { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 22px 20px 20px; min-width: 0; }
+.course h3 { font-size: 14px; font-weight: 600; font-family: var(--body); letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-3); display: flex; align-items: center; gap: 10px; }
+.course h3 i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; transform: rotate(45deg); }
+.course ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 14px; }
+.course li { font-family: var(--display); font-size: 20px; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; }
+.course li small { display: block; margin-top: 4px; font-family: var(--body); font-size: 14px; color: var(--ink-2); font-weight: 400; letter-spacing: 0; }
+.tags { display: inline-flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+.tag { font-family: var(--body); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--line-strong); color: var(--ink-2); }
+.tag.gf { border-color: rgba(159, 203, 152, 0.5); color: var(--sage); }
+.tag.warn { border-color: rgba(243, 185, 74, 0.5); color: var(--gold); }
+.note-line { margin-top: 22px; display: flex; gap: 12px; align-items: flex-start; color: var(--ink-2); font-size: 15px; max-width: 70ch; }
+.note-line svg { flex: 0 0 auto; margin-top: 2px; }
+
+/* sign-up board */
+.board-head { display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: end; justify-content: space-between; }
+.progress { margin-top: 26px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.bar { flex: 1 1 220px; height: 10px; border-radius: 999px; background: var(--surface-2); overflow: hidden; max-width: 420px; }
+.bar i { display: block; height: 100%; width: 0; border-radius: inherit; background: linear-gradient(90deg, var(--gold), var(--persimmon)); transition: width 0.8s cubic-bezier(.2,.8,.2,1); }
+.progress b { font-family: var(--display); font-weight: 700; font-size: 18px; font-variant-numeric: tabular-nums; }
+.progress span { color: var(--ink-2); font-size: 15px; }
+.btn {
+  appearance: none; border: 0; cursor: pointer; border-radius: 999px;
+  padding: 13px 22px; font-weight: 700; font-size: 15px; letter-spacing: 0.01em;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  transition: transform 0.15s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:active { transform: translateY(1px) scale(0.98); }
+.btn-primary { background: var(--persimmon); color: var(--on-accent); box-shadow: 0 8px 24px rgba(242, 105, 58, 0.28); }
+.btn-primary:hover { background: #ff7b4c; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line-strong); }
+.btn-ghost:hover { background: rgba(244, 234, 217, 0.06); }
+.btn[disabled] { opacity: 0.6; cursor: progress; }
+.board { margin-top: 40px; display: grid; gap: 18px; grid-template-columns: repeat(4, minmax(0, 1fr)); align-items: start; }
+.col { min-width: 0; }
+.col-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 0 4px 12px; border-bottom: 2px solid var(--c); }
+.col-head h3 { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+.col-head span { font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.cards { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 12px; }
+.card { border-radius: 14px; padding: 16px; border: 1px solid var(--line); background: var(--surface); min-width: 0; position: relative; }
+.card.open { border-style: dashed; border-color: var(--line-strong); background: transparent; }
+.card.claimed { background: linear-gradient(180deg, var(--surface-2), var(--surface)); border-color: color-mix(in srgb, var(--c) 45%, transparent); }
+.card.fresh { animation: pop 0.7s cubic-bezier(.2,1.4,.4,1); }
+@keyframes pop { 0% { transform: scale(0.94); } 100% { transform: none; } }
+.card .dish { font-family: var(--display); font-size: 18px; font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; }
+.card .hint { margin-top: 4px; font-size: 14px; color: var(--ink-2); overflow-wrap: anywhere; }
+.card .who { margin-top: 10px; display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; color: var(--c); overflow-wrap: anywhere; }
+.card .who::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: 0 0 auto; }
+.card .row { margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.claim { appearance: none; border: 1px solid var(--c); color: var(--c); background: transparent; border-radius: 999px; padding: 7px 14px; font-weight: 700; font-size: 13px; cursor: pointer; }
+.claim:hover { background: color-mix(in srgb, var(--c) 14%, transparent); }
+.remove { appearance: none; border: 0; background: none; color: var(--ink-3); font-size: 13px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; padding: 4px 0; margin-left: auto; }
+.remove.arm { color: var(--cranberry); }
+.empty-col { margin-top: 14px; color: var(--ink-3); font-size: 14px; padding: 4px; }
+.notice { margin-top: 26px; padding: 14px 18px; border-radius: 14px; border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-2); font-size: 15px; max-width: 70ch; }
+.notice strong { color: var(--ink); }
+
+/* dialog */
+dialog {
+  border: 1px solid var(--line-strong); border-radius: 22px; padding: 0;
+  background: var(--surface); color: var(--ink); width: min(520px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px); overflow: auto;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+dialog::backdrop { background: rgba(6, 16, 12, 0.66); backdrop-filter: blur(3px); }
+.dlg { padding: 26px 24px 24px; display: grid; gap: 18px; }
+.dlg h3 { font-size: 28px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; }
+.dlg .dsub { color: var(--ink-2); font-size: 15px; margin-top: -8px; }
+.field { display: grid; gap: 6px; }
+.field label, .field .lbl { font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+.field input[type=text], .field select, .field textarea {
+  width: 100%; border-radius: 12px; border: 1px solid var(--line-strong); background: var(--pine);
+  padding: 12px 14px; font-size: 16px; outline: none;
+}
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--gold); }
+.field textarea { min-height: 72px; resize: vertical; }
+.cats { display: flex; flex-wrap: wrap; gap: 8px; }
+.cats label { cursor: pointer; }
+.cats input { position: absolute; opacity: 0; pointer-events: none; }
+.cats span { display: inline-block; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line-strong); font-size: 14px; font-weight: 600; text-transform: none; letter-spacing: 0; color: var(--ink-2); }
+.cats input:checked + span { background: var(--c); border-color: var(--c); color: var(--on-accent); }
+.cats input:focus-visible + span { outline: 2px solid var(--gold); outline-offset: 2px; }
+.checks { display: flex; flex-wrap: wrap; gap: 10px 22px; }
+.checks label { display: inline-flex; gap: 8px; align-items: center; font-size: 15px; cursor: pointer; text-transform: none; letter-spacing: 0; color: var(--ink); font-weight: 500; }
+.checks input { width: 18px; height: 18px; accent-color: var(--gold); }
+.dlg-actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+.msgbox { border-radius: 14px; border: 1px dashed var(--line-strong); padding: 14px; background: var(--pine); font-size: 15px; white-space: pre-wrap; overflow-wrap: anywhere; user-select: all; }
+.err { color: var(--cranberry); font-size: 14px; }
+
+.toast {
+  position: fixed; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); transform: translate(-50%, 140%);
+  background: var(--ink); color: var(--pine); padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: 15px;
+  box-shadow: 0 12px 30px rgba(0,0,0,.4); transition: transform 0.35s cubic-bezier(.2,1.2,.4,1); z-index: 20; max-width: calc(100vw - 32px);
+}
+.toast.show { transform: translate(-50%, 0); }
+
+footer { padding-block: 56px 72px; border-top: 1px solid var(--line); }
+footer .bye { font-family: var(--display); font-size: clamp(30px, 5vw, 48px); font-weight: 300; letter-spacing: -0.02em; }
+footer .bye b { font-weight: 800; color: var(--gold); }
+footer p.small { margin-top: 10px; color: var(--ink-3); font-size: 14px; }
+.owner-only { margin-top: 18px; font-size: 14px; color: var(--ink-3); }
+
+@media (max-width: 960px) { .board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) {
+  .welcome { grid-template-columns: minmax(0, 1fr); }
+  .photos { max-width: 440px; }
+}
+@media (max-width: 560px) {
+  .board { grid-template-columns: minmax(0, 1fr); }
+  .board-head .btn { width: 100%; }
+  .fact dd { font-size: 17px; }
+  .facts { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .fact.where { grid-column: 1 / -1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+
+</head><body><header class="hero" id="hero">
+  <canvas id="leaves" aria-hidden="true"></canvas>
+  <div class="wrap">
+    <div class="eyebrow">Thursday <span class="dot"></span> November 26 <span class="dot"></span> 2026</div>
+    <h1 class="title">Thanksgiving<span class="year">’26</span><span class="line2">at Hill Street</span></h1>
+    <p class="lede">We’re so glad you’re coming.</p>
+    <dl class="facts">
+      <div class="fact"><dt>When</dt><dd>Thu, Nov 26 · <span class="countdown" id="countdown"></span></dd></div>
+      <div class="fact"><dt>Arrive</dt><dd id="time">3:00 PM</dd></div>
+      <div class="fact where"><dt>Where</dt><dd id="place">573 Hill St, Hamden, CT</dd></div>
+    </dl>
+    <p class="tap-hint" id="tapHint">psst, kids: tap up here</p>
+  </div>
+</header>
+
+<main>
+  <section>
+    <div class="wrap">
+      <div class="letter">
+        <div class="kicker">A note from the host</div>
+        <h2 class="h2">Come hungry.</h2>
+        <div class="body">
+          <p>Dear friends,</p>
+          <p>We can’t wait to have all of you around the table this year. Below is what we’re cooking, so you know what to expect, and a sign-up so nobody ends up with five apple pies.</p>
+          <p>Pick an appetizer, a side, a dessert or a drink to bring, and tell us if it has gluten or nuts. Looking forward to seeing everyone.</p>
+        </div>
+        <p class="sig">Aria, Anya &amp; Rohan</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="kicker">The menu</div>
+      <h2 class="h2">What’s on the table</h2>
+      <p class="sub">Here’s what we’re making. Your dishes fill in the rest.</p>
+      <div class="courses" id="courses"></div>
+      <p class="note-line">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="var(--sage)" stroke-width="2"/><path d="M12 7v6M12 16.5v.5" stroke="var(--sage)" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <span>Most of the main dishes are gluten-free. If you’re bringing something with gluten or nuts, tick the box when you sign up so everyone can plan.</span>
+      </p>
+    </div>
+  </section>
+
+  <section id="bring">
+    <div class="wrap">
+      <div class="board-head">
+        <div>
+          <div class="kicker">Sign-up</div>
+          <h2 class="h2">Bring a dish</h2>
+          <p class="sub">Claim one of the spots below, or add your own idea. Everyone sees the list, so nothing doubles up.</p>
+        </div>
+        <button class="btn btn-primary" id="addOther" type="button">
+          <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>
+          Bring something else
+        </button>
+      </div>
+      <div class="progress" aria-live="polite">
+        <div class="bar"><i id="barFill"></i></div>
+        <b id="progressNum">0 of 9</b><span id="progressText">suggested dishes claimed</span>
+      </div>
+      <div class="notice" id="modeNotice" hidden></div>
+      <div class="board" id="board"></div>
+      <p class="owner-only" id="ownerNote" hidden>Only you see this: when a family tells you what they’re bringing, add it here under their name.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="bye">See you <b>Thursday.</b></p>
+    <p class="small">Questions about the day? Just text Rohan.</p>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <form class="dlg" id="dlgForm" method="dialog" novalidate>
+    <div>
+      <h3 id="dlgTitle">Bring a dish</h3>
+    </div>
+    <p class="dsub" id="dlgSub"></p>
+    <div class="field" id="catField">
+      <span class="lbl">Course</span>
+      <div class="cats" id="catPick" role="radiogroup" aria-label="Course"></div>
+    </div>
+    <div class="field">
+      <label for="fDish">What you’re bringing</label>
+      <input type="text" id="fDish" maxlength="80" autocomplete="off" placeholder="e.g. Grandma’s apple crumble">
+    </div>
+    <div class="field">
+      <label for="fFamily">Your family</label>
+      <select id="fFamily"><option value="">Pick your family</option><option>Nik &amp; Aisa</option><option>Ranjit &amp; Ruchika</option><option>Astha &amp; Abhishek</option><option>Ankita &amp; Naveen</option></select>
+    </div>
+    <div class="field">
+      <span class="lbl">Heads-up for allergies</span>
+      <div class="checks">
+        <label><input type="checkbox" id="fGluten"> Contains gluten</label>
+        <label><input type="checkbox" id="fNuts"> Contains nuts</label>
+      </div>
+    </div>
+    <div class="field">
+      <label for="fNote">Note (optional)</label>
+      <input type="text" id="fNote" maxlength="100" autocomplete="off" placeholder="e.g. needs 10 minutes in the oven">
+    </div>
+    <div class="field" id="msgWrap" hidden>
+      <span class="lbl">Send this to Rohan</span>
+      <div class="msgbox" id="msgBox"></div>
+    </div>
+    <p class="err" id="dlgErr" role="alert" hidden></p>
+    <div class="dlg-actions">
+      <button type="button" class="btn btn-ghost" id="dlgCancel">Cancel</button>
+      <button type="submit" class="btn btn-primary" id="dlgSubmit">Add to the table</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+  "use strict";
+
+  /* ------------------------------------------------------------------ config
+     ENDPOINT: the Google Apps Script web-app URL for the standalone version.
+     Leave empty inside claude.ai, where the page uses the artifact's own store. */
+  const CONFIG = { endpoint: "PASTE-WEB-APP-URL-HERE" };
+  const ENDPOINT = /^https:\/\/script\.google\.com\//.test(CONFIG.endpoint) ? CONFIG.endpoint : "";
+
+  const CATS = {
+    app:     { label: "Appetizers", one: "appetizer", color: "var(--gold)" },
+    side:    { label: "Sides",      one: "side",      color: "var(--sage)" },
+    dessert: { label: "Desserts",   one: "dessert",   color: "var(--cranberry)" },
+    drink:   { label: "Drinks",     one: "drink",     color: "var(--cider)" },
+  };
+  const SLOTS = [
+    { id: "veggie-tray",     cat: "app",     dish: "Veggie tray with dip",           hint: "Ranch or hummus, enough for 20" },
+    { id: "mashed-potatoes", cat: "side",    dish: "Mashed potatoes",                hint: "About 7 lb of potatoes" },
+    { id: "dinner-rolls",    cat: "side",    dish: "Dinner rolls",                   hint: "About 30 rolls" },
+    { id: "green-veg",       cat: "side",    dish: "Green beans or roasted veggies", hint: "About 4 lb" },
+    { id: "mac-cheese",      cat: "side",    dish: "Mac and cheese",                 hint: "One 9×13 tray, for the kids" },
+    { id: "apple-pie",       cat: "dessert", dish: "Apple pie",                      hint: "One or two pies" },
+    { id: "kids-sweets",     cat: "dessert", dish: "Brownies or cookies",            hint: "Two dozen, for the kids" },
+    { id: "cider-punch",     cat: "drink",   dish: "Apple cider punch",              hint: "Alcohol-free, about 2 gallons" },
+    { id: "adult-drinks",    cat: "drink",   dish: "Wine or sparkling cider",        hint: "3 to 4 bottles for the grown-ups" },
+  ];
+  const MENU = [
+    { title: "The main event", color: "var(--persimmon)", items: [
+      { n: "Roast turkey", s: "With gluten-free gravy", tags: [["GF", "gf"]] },
+    ]},
+    { title: "To start", color: "var(--gold)", items: [
+      { n: "Bacon-wrapped scallops", tags: [["Shellfish", "warn"]] },
+      { n: "Meat and cheese platter" },
+      { n: "Chicken tenders", s: "For the kids" },
+    ]},
+    { title: "On the side", color: "var(--sage)", items: [
+      { n: "Sweet potato casserole", s: "The NYT recipe, with a pecan crumble", tags: [["GF", "gf"], ["Pecans", "warn"]] },
+      { n: "Stuffing", tags: [["GF", "gf"]] },
+      { n: "Cranberry sauce" },
+    ]},
+    { title: "Sweet finish", color: "var(--cranberry)", items: [
+      { n: "Pumpkin pie", s: "With whipped cream", tags: [["GF", "gf"]] },
+    ]},
+    { title: "To drink", color: "var(--cider)", items: [
+      { n: "Water and sparkling water" },
+    ]},
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  function h(tag, attrs, ...kids) {
+    const el = document.createElement(tag);
+    if (attrs) for (const [k, v] of Object.entries(attrs)) {
+      if (v == null || v === false) continue;
+      if (k === "class") el.className = v;
+      else if (k === "style") el.setAttribute("style", v);
+      else if (k.startsWith("on")) el.addEventListener(k.slice(2), v);
+      else el.setAttribute(k, v === true ? "" : v);
+    }
+    for (const kid of kids.flat()) if (kid != null && kid !== false) el.append(kid.nodeType ? kid : String(kid));
+    return el;
+  }
+  const store = {
+    get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+  };
+  const clean = (v, n) => (typeof v === "string" ? v : "").replace(/\s+/g, " ").trim().slice(0, n);
+
+  /* ------------------------------------------------------------------ menu */
+  const courses = $("courses");
+  for (const c of MENU) {
+    courses.append(h("article", { class: "course" },
+      h("h3", null, h("i", { style: "background:" + c.color }), c.title),
+      h("ul", null, c.items.map((it) => h("li", null, it.n,
+        it.s ? h("small", null, it.s) : null,
+        it.tags ? h("span", { class: "tags" }, it.tags.map(([t, k]) => h("span", { class: "tag " + k }, t))) : null,
+      )))
+    ));
+  }
+
+  /* ------------------------------------------------------------------ countdown */
+  (function countdown() {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const day = new Date(2026, 10, 26);
+    const d = Math.round((day - today) / 86400000);
+    $("countdown").textContent = d > 1 ? d + " days to go" : d === 1 ? "tomorrow!" : d === 0 ? "today!" : "thank you!";
+  })();
+
+  /* ------------------------------------------------------------------ state */
+  const S = {
+    items: [],          // normalized sign-ups
+    canWrite: null,     // true | false | null (unknown: try, and learn from the result)
+    isOwner: false,
+    fresh: new Set(),
+    ready: false,
+  };
+  function norm(raw, id) {
+    const cat = CATS[raw && raw.cat] ? raw.cat : null;
+    if (!cat) return null;
+    const slot = SLOTS.find((s) => s.id === (raw.slot || ""));
+    return {
+      id: String(id || raw.id || ""),
+      slot: slot ? slot.id : "",
+      cat: slot ? slot.cat : cat,
+      dish: clean(raw.dish, 80) || (slot ? slot.dish : "A dish"),
+      family: clean(raw.family, 40) || "A friend",
+      gluten: raw.gluten === true || raw.gluten === "TRUE" || raw.gluten === "true",
+      nuts: raw.nuts === true || raw.nuts === "TRUE" || raw.nuts === "true",
+      note: clean(raw.note, 100),
+      at: Number(raw.at) || 0,
+      by: typeof raw.by === "string" ? raw.by : "",
+      mine: !!raw.mine,
+    };
+  }
+
+  /* ------------------------------------------------------------------ backends */
+  const Backend = { kind: "none", canRemove: () => false, async add() { throw { code: "readonly" }; }, async remove() {} };
+
+  async function startClaude() {
+    if (!window.claude || typeof window.claude.use !== "function") return false;
+    const [db, user] = await Promise.all([
+      window.claude.use("db").catch(() => null),
+      window.claude.use("user").catch(() => null),
+    ]);
+    if (!db) return false;
+    const myId = user ? await user.id() : null;
+    S.isOwner = user ? await user.isOwner() : false;
+    const w = user ? await user.can("data.write") : null;
+    S.canWrite = w === true ? true : w === false ? false : null;
+    const holder = myId || "anon-" + Math.random().toString(36).slice(2);
+    Backend.kind = "claude";
+    Backend.canRemove = (it) => S.isOwner || (!!myId && it.by === myId);
+    Backend.add = async (it) => {
+      const body = { slot: it.slot, cat: it.cat, dish: it.dish, family: it.family, gluten: it.gluten, nuts: it.nuts, note: it.note, at: Date.now(), by: myId || "" };
+      try {
+        if (it.slot) {
+          const ref = db.doc("signups/slot-" + it.slot);
+          let lease = null;
+          try { lease = await ref.acquire({ holder, ttlMs: 4000 }); } catch (e) { if (e && e.code === "invalid_argument") throw e; }
+          if (lease && !lease.acquired) throw { code: "taken" };
+          const snap = await ref.get();
+          if (snap.exists && (snap.data() || {}).family) throw { code: "taken" };
+          await ref.set(body);
+          return "slot-" + it.slot;
+        }
+        const ref = await db.collection("signups").add(body);
+        return ref.id;
+      } catch (e) {
+        if (e && e.code === "taken") throw e;
+        if (e && (e.code === "invalid_argument" || e.code === "not_granted")) { S.canWrite = false; throw { code: "readonly" }; }
+        if (e && e.code === "quota_exceeded") throw { code: "full" };
+        throw { code: "error" };
+      }
+    };
+    Backend.remove = async (it) => { await db.doc("signups/" + it.id).delete(); };
+    db.collection("signups").onSnapshot((snap) => {
+      S.items = snap.docs.map((d) => norm(d.data(), d.id)).filter(Boolean);
+      S.ready = true;
+      render();
+    }, () => { S.ready = true; render(); });
+    return true;
+  }
+
+  async function startSheet() {
+    if (!ENDPOINT) return false;
+    const tokens = store.get("tg26-tokens") || {};
+    Backend.kind = "sheet";
+    S.canWrite = true;
+    Backend.canRemove = (it) => !!tokens[it.id];
+    async function call(payload) {
+      const res = await fetch(ENDPOINT, { method: "POST", body: JSON.stringify(payload) });
+      if (!res.ok) throw { code: "error" };
+      const data = await res.json();
+      if (!data || data.ok !== true) throw { code: (data && data.code) || "error" };
+      return data;
+    }
+    async function load() {
+      try {
+        const res = await fetch(ENDPOINT + "?t=" + Date.now());
+        const data = await res.json();
+        if (data && Array.isArray(data.items)) {
+          S.items = data.items.map((r) => norm(r, r.id)).filter(Boolean);
+        }
+      } catch {}
+      S.ready = true;
+      render();
+    }
+    Backend.add = async (it) => {
+      const data = await call({ action: "add", item: it });
+      tokens[data.id] = data.token; store.set("tg26-tokens", tokens);
+      await load();
+      return data.id;
+    };
+    Backend.remove = async (it) => {
+      await call({ action: "remove", id: it.id, token: tokens[it.id] });
+      delete tokens[it.id]; store.set("tg26-tokens", tokens);
+      await load();
+    };
+    load();
+    setInterval(() => { if (!document.hidden) load(); }, 20000);
+    document.addEventListener("visibilitychange", () => { if (!document.hidden) load(); });
+    return true;
+  }
+
+  /* ------------------------------------------------------------------ render */
+  const board = $("board");
+  function render() {
+    const claimedSlots = new Map(S.items.filter((i) => i.slot).map((i) => [i.slot, i]));
+    const n = SLOTS.filter((s) => claimedSlots.has(s.id)).length;
+    $("barFill").style.width = Math.round((n / SLOTS.length) * 100) + "%";
+    $("progressNum").textContent = n + " of " + SLOTS.length;
+    $("progressText").textContent = n === SLOTS.length ? "suggested dishes claimed. Extras welcome!" : "suggested dishes claimed";
+
+    board.replaceChildren();
+    for (const [key, cat] of Object.entries(CATS)) {
+      const slots = SLOTS.filter((s) => s.cat === key);
+      const extras = S.items.filter((i) => !i.slot && i.cat === key).sort((a, b) => a.at - b.at);
+      const count = slots.filter((s) => claimedSlots.has(s.id)).length + extras.length;
+      const ul = h("ul", { class: "cards" });
+      for (const s of slots) {
+        const it = claimedSlots.get(s.id);
+        ul.append(it ? claimedCard(it, s) : openCard(s));
+      }
+      for (const it of extras) ul.append(claimedCard(it, null));
+      board.append(h("div", { class: "col", style: "--c:" + cat.color },
+        h("div", { class: "col-head" }, h("h3", null, cat.label), h("span", null, count ? count + " coming" : "")),
+        ul,
+        h("button", { class: "claim", type: "button", style: "margin-top:12px", onclick: () => openDialog({ cat: key }) }, "+ Add " + (key === "app" ? "an " : "a ") + cat.one),
+      ));
+    }
+    S.fresh.clear();
+
+    const note = $("modeNotice");
+    if (S.canWrite === false) {
+      note.hidden = false;
+      note.replaceChildren(h("strong", null, "Tap any dish to sign up. "), "We’ll write a quick message for you to send Rohan, and he’ll add you to the list.");
+    } else note.hidden = true;
+    $("ownerNote").hidden = !(S.isOwner && Backend.kind === "claude");
+  }
+  function openCard(s) {
+    return h("li", { class: "card open" },
+      h("div", { class: "dish" }, s.dish),
+      h("div", { class: "hint" }, s.hint),
+      h("div", { class: "row" }, h("button", { class: "claim", type: "button", onclick: () => openDialog({ slot: s }) }, "I’ll bring this")),
+    );
+  }
+  function claimedCard(it, s) {
+    const tags = [];
+    if (it.gluten) tags.push(h("span", { class: "tag warn" }, "Gluten"));
+    if (it.nuts) tags.push(h("span", { class: "tag warn" }, "Nuts"));
+    const li = h("li", { class: "card claimed" + (S.fresh.has(it.id) ? " fresh" : "") },
+      h("div", { class: "dish" }, it.dish),
+      it.note ? h("div", { class: "hint" }, it.note) : (s && it.dish !== s.dish ? h("div", { class: "hint" }, "for the " + s.dish.toLowerCase() + " spot") : null),
+      h("div", { class: "who" }, it.family),
+      tags.length ? h("div", { class: "tags" }, tags) : null,
+    );
+    if (Backend.canRemove(it)) {
+      const btn = h("button", { class: "remove", type: "button" }, "Remove");
+      let armed = null;
+      btn.addEventListener("click", async () => {
+        if (!armed) {
+          btn.classList.add("arm"); btn.textContent = "Tap again to remove";
+          armed = setTimeout(() => { armed = null; btn.classList.remove("arm"); btn.textContent = "Remove"; }, 3500);
+          return;
+        }
+        clearTimeout(armed); btn.disabled = true; btn.textContent = "Removing…";
+        try { await Backend.remove(it); toast("Removed"); }
+        catch { btn.disabled = false; btn.textContent = "Remove"; toast("Couldn’t remove that. Try again."); }
+      });
+      li.append(h("div", { class: "row" }, btn));
+    }
+    return li;
+  }
+
+  /* ------------------------------------------------------------------ dialog */
+  const dlg = $("dlg");
+  let ctx = null;
+  const catPick = $("catPick");
+  for (const [key, cat] of Object.entries(CATS)) {
+    catPick.append(h("label", { style: "--c:" + cat.color },
+      h("input", { type: "radio", name: "cat", value: key, id: "cat-" + key }),
+      h("span", null, cat.label.replace(/s$/, "")),
+    ));
+  }
+  function readonlyMode() { return S.canWrite === false; }
+  function openDialog(opts) {
+    ctx = opts;
+    const slot = opts.slot || null;
+    $("dlgTitle").textContent = slot ? slot.dish : "Bring something else";
+    $("dlgSub").textContent = slot ? slot.hint + ". Change the name if you’re making your own twist on it." : "Anything you love to make. Pick the course so it lands in the right spot.";
+    $("catField").hidden = !!slot;
+    const preset = slot ? slot.cat : (opts.cat || "");
+    for (const r of catPick.querySelectorAll("input")) r.checked = r.value === preset;
+    $("fDish").value = slot ? slot.dish : "";
+    $("fFamily").value = store.get("tg26-family") || "";
+    $("fGluten").checked = false; $("fNuts").checked = false; $("fNote").value = "";
+    $("dlgErr").hidden = true;
+    $("msgWrap").hidden = true;
+    $("dlgSubmit").disabled = false;
+    $("dlgSubmit").textContent = readonlyMode() ? "Write my message" : "Add to the table";
+    $("dlgSubmit").dataset.stage = "form";
+    if (typeof dlg.showModal === "function") dlg.showModal(); else dlg.setAttribute("open", "");
+    setTimeout(() => (slot ? $("fFamily") : $("fDish")).focus({ preventScroll: true }), 30);
+  }
+  function closeDialog() { if (typeof dlg.close === "function") dlg.close(); else dlg.removeAttribute("open"); }
+  $("dlgCancel").addEventListener("click", closeDialog);
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) closeDialog(); });
+  function err(msg) { const e = $("dlgErr"); e.textContent = msg; e.hidden = !msg; }
+
+  function composeMessage(it) {
+    const extras = [];
+    if (it.gluten) extras.push("it has gluten");
+    if (it.nuts) extras.push("it has nuts");
+    let msg = "Hi Rohan! " + it.family + " will bring " + it.dish + " (" + CATS[it.cat].one + ") for Thanksgiving.";
+    if (extras.length) msg += " Heads-up: " + extras.join(" and ") + ".";
+    if (it.note) msg += " " + it.note;
+    return msg;
+  }
+  async function copyText(text) {
+    try { await navigator.clipboard.writeText(text); return true; }
+    catch {
+      const r = document.createRange(); r.selectNodeContents($("msgBox"));
+      const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      return false;
+    }
+  }
+
+  $("dlgForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const btn = $("dlgSubmit");
+    if (btn.dataset.stage === "copy") {
+      const ok = await copyText($("msgBox").textContent);
+      btn.textContent = ok ? "Copied" : "Selected, copy it";
+      return;
+    }
+    const slot = ctx && ctx.slot;
+    const picked = catPick.querySelector("input:checked");
+    const it = {
+      slot: slot ? slot.id : "",
+      cat: slot ? slot.cat : (picked ? picked.value : ""),
+      dish: clean($("fDish").value, 80),
+      family: clean($("fFamily").value, 40),
+      gluten: $("fGluten").checked,
+      nuts: $("fNuts").checked,
+      note: clean($("fNote").value, 100),
+    };
+    if (!it.cat) return err("Pick a course: appetizer, side, dessert or drink.");
+    if (!it.dish) { $("fDish").focus(); return err("Add the dish you’re bringing."); }
+    if (!it.family) { $("fFamily").focus(); return err("Add your family name so everyone knows who’s bringing it."); }
+    err("");
+    store.set("tg26-family", it.family);
+
+    if (readonlyMode()) return showMessage(it);
+
+    btn.disabled = true; btn.textContent = "Adding…";
+    try {
+      const id = await Backend.add(it);
+      if (id) S.fresh.add(String(id));
+      closeDialog();
+      toast("You’re on the list. Thank you!");
+      burst();
+    } catch (x) {
+      btn.disabled = false; btn.textContent = "Add to the table";
+      const code = x && x.code;
+      if (code === "taken") { err("Someone just claimed this one. Pick another, or add your dish under Bring something else."); }
+      else if (code === "readonly") { showMessage(it); }
+      else if (code === "full") { err("The list is full. Text Rohan what you’re bringing instead."); }
+      else { err("That didn’t save. Check your connection and try again."); }
+    }
+  });
+  function showMessage(it) {
+    $("msgBox").textContent = composeMessage(it);
+    $("msgWrap").hidden = false;
+    $("dlgSub").textContent = "This page can’t save sign-ups from your account, so send Rohan this message and he’ll add you.";
+    const btn = $("dlgSubmit");
+    btn.disabled = false; btn.dataset.stage = "copy"; btn.textContent = "Copy message";
+    render();
+  }
+
+  let toastTimer = null;
+  function toast(text) {
+    const t = $("toast"); t.textContent = text; t.classList.add("show");
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove("show"), 2600);
+  }
+
+  $("addOther").addEventListener("click", () => openDialog({}));
+
+  /* ------------------------------------------------------------------ leaves */
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const cvs = $("leaves"), g = cvs.getContext("2d");
+  const hero = $("hero");
+  const COLORS = ["#f2693a", "#f3b94a", "#ec5f86", "#d9803a", "#c4492e", "#9fcb98"];
+  const MAPLE = [[0,-1],[.13,-.58],[.42,-.74],[.34,-.3],[.86,-.42],[.66,-.06],[.95,.12],[.42,.22],[.5,.55],[.12,.36],[.04,.66],[.04,1],[-.04,1],[-.04,.66],[-.12,.36],[-.5,.55],[-.42,.22],[-.95,.12],[-.66,-.06],[-.86,-.42],[-.34,-.3],[-.42,-.74],[-.13,-.58]];
+  let W = 0, H = 0, dpr = 1, leaves = [], running = false, visible = true, last = 0;
+  function size() {
+    dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = hero.clientWidth; H = hero.clientHeight;
+    cvs.width = Math.round(W * dpr); cvs.height = Math.round(H * dpr);
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function leaf(x, y, burstMode) {
+    const s = 9 + Math.random() * 14;
+    const a = Math.random() * Math.PI * 2;
+    return {
+      x, y, s, rot: Math.random() * 6.28, vr: (Math.random() - 0.5) * 0.04,
+      vx: burstMode ? Math.cos(a) * (2 + Math.random() * 4) : (Math.random() - 0.5) * 0.4,
+      vy: burstMode ? Math.sin(a) * (2 + Math.random() * 4) - 2 : 0.35 + Math.random() * 0.6,
+      sway: Math.random() * 6.28, kind: Math.random() < 0.65 ? 0 : 1,
+      c: COLORS[(Math.random() * COLORS.length) | 0], alpha: burstMode ? 1 : 0.35 + Math.random() * 0.45, life: burstMode ? 1 : -1,
+    };
+  }
+  function drawLeaf(L) {
+    g.save(); g.translate(L.x, L.y); g.rotate(L.rot); g.scale(L.s, L.s * (0.75 + 0.25 * Math.cos(L.sway)));
+    g.globalAlpha = Math.max(0, L.alpha * (L.life < 0 ? 1 : L.life));
+    g.fillStyle = L.c;
+    g.beginPath();
+    if (L.kind === 0) { MAPLE.forEach(([px, py], i) => (i ? g.lineTo(px, py) : g.moveTo(px, py))); }
+    else { g.moveTo(0, -1); g.bezierCurveTo(0.7, -0.6, 0.6, 0.5, 0, 1); g.bezierCurveTo(-0.6, 0.5, -0.7, -0.6, 0, -1); }
+    g.closePath(); g.fill();
+    g.globalAlpha *= 0.35; g.strokeStyle = "#0f241d"; g.lineWidth = 0.06;
+    g.beginPath(); g.moveTo(0, -0.8); g.lineTo(0, 0.95); g.stroke();
+    g.restore();
+  }
+  function seed() {
+    const n = Math.max(12, Math.min(30, Math.round(W / 45)));
+    leaves = Array.from({ length: n }, () => leaf(Math.random() * W, Math.random() * H, false));
+  }
+  function frame(t) {
+    if (!running) return;
+    const dt = Math.min(3, (t - (last || t)) / 16.7); last = t;
+    g.clearRect(0, 0, W, H);
+    for (const L of leaves) {
+      L.sway += 0.02 * dt;
+      if (L.life >= 0) { L.vy += 0.12 * dt; L.vx *= 0.985; L.life -= 0.008 * dt; }
+      L.x += (L.vx + (L.life < 0 ? Math.sin(L.sway) * 0.5 : 0)) * dt;
+      L.y += L.vy * dt; L.rot += L.vr * dt;
+      if (L.life < 0 && L.y > H + 30) { L.y = -30; L.x = Math.random() * W; }
+      drawLeaf(L);
+    }
+    leaves = leaves.filter((L) => L.life < 0 || (L.life > 0 && L.y < H + 40));
+    requestAnimationFrame(frame);
+  }
+  function start() { if (reduce || running || !visible) return; running = true; last = 0; requestAnimationFrame(frame); }
+  function stop() { running = false; }
+  function staticDraw() { g.clearRect(0, 0, W, H); leaves.forEach(drawLeaf); }
+  function burst(x, y) {
+    if (reduce) return;
+    const r = hero.getBoundingClientRect();
+    const bx = x != null ? x : W * 0.5, by = y != null ? y : Math.min(H * 0.4, 260);
+    if (x == null && (r.bottom < 0)) return;
+    for (let i = 0; i < 16; i++) leaves.push(leaf(bx, by, true));
+  }
+  size(); seed();
+  if (reduce) { staticDraw(); $("tapHint").hidden = true; } else start();
+  new ResizeObserver(() => { size(); if (reduce) staticDraw(); }).observe(hero);
+  new IntersectionObserver(([en]) => { visible = en.isIntersecting; visible ? start() : stop(); }).observe(hero);
+  hero.addEventListener("pointerdown", (e) => {
+    if (e.target.closest("a,button,input")) return;
+    const r = hero.getBoundingClientRect();
+    burst(e.clientX - r.left, e.clientY - r.top);
+    $("tapHint").textContent = "gobble gobble";
+  });
+
+  /* ------------------------------------------------------------------ boot */
+  render();
+  (async () => {
+    let ok = false;
+    try { ok = await startSheet(); } catch {}
+    if (!ok) { try { ok = await startClaude(); } catch {} }
+    if (!ok) { S.canWrite = false; Backend.kind = "none"; }
+    render();
+  })();
+})();
+</script>
+</body></html>
