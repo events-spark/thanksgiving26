@@ -101,7 +101,7 @@ app.disable("x-powered-by");
 app.set("trust proxy", 1);
 app.use((req, res, next) => { res.set("X-Content-Type-Options", "nosniff"); next(); });
 
-app.get("/healthz", (req, res) => res.type("text").send("ok"));
+app.get("/healthz", (req, res) => res.type("text").send("ok " + db.kind));
 
 app.get("/api", async (req, res, next) => {
   try {
